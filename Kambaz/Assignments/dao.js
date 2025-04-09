@@ -17,10 +17,12 @@ export function createAssignment(assignment){
     // const newAssignment = {...assignment, _id: uuidv4()};
     // Database.assignments = [...assignments, newAssignment];
     // return newAssignment;
-    delete assignment._id;
-    // if (!assignment._id) {
-    //     assignment._id = uuidv4();
-    //   }
+    // delete assignment._id;
+    if (!assignment._id) {
+        assignment._id = uuidv4();
+      }
+    assignment._id=String(assignment._id);
+    console.log(typeof(assignment._id),assignment._id);
     return model.create(assignment);
 }
 
@@ -29,6 +31,7 @@ export function updateAssignment(assignmentId,assignmentUpdates){
     // const assignment = assignments.find((assignment)=> assignmentId===assignment._id);
     // Object.assign(assignment,assignmentUpdates);
     // return assignment;
+    console.log(typeof(assignmentId),assignmentId);
     return model.updateOne({ _id: assignmentId }, {$set:assignmentUpdates});
 }
 export function deleteAssignment(assignmentId){
