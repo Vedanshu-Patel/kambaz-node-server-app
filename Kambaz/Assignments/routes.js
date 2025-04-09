@@ -17,6 +17,7 @@ app.post("/api/assignments/create",async (req,res)=>{
 app.put("/api/assignments/:assignmentId", async (req,res)=>{
     const assignmentUpdates = req.body;
     const {assignmentId} = req.params;
+    console.log(assignmentId);
     const status = await dao.updateAssignment(assignmentId,assignmentUpdates);
     res.send(status);
 });
