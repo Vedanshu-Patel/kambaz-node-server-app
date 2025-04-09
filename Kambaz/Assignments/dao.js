@@ -17,10 +17,10 @@ export function createAssignment(assignment){
     // const newAssignment = {...assignment, _id: uuidv4()};
     // Database.assignments = [...assignments, newAssignment];
     // return newAssignment;
-    // delete assignment._id;
-    if (!assignment._id) {
-        assignment._id = uuidv4();
-      }
+    delete assignment._id;
+    // if (!assignment._id) {
+    //     assignment._id = uuidv4();
+    //   }
     return model.create(assignment);
 }
 
