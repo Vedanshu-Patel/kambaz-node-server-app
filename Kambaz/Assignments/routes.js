@@ -18,7 +18,7 @@ app.put("/api/assignments/:assignmentId", async (req,res)=>{
     const assignmentUpdates = req.body;
     const {assignmentId} = req.params;
     console.log(assignmentId);
-    const status = await dao.updateAssignment(assignmentId,assignmentUpdates);
+    const status = await dao.updateAssignment(assignmentUpdates._id,assignmentUpdates);
     res.send(status);
 });
 app.delete("/api/assignments/:assignmentId", async (req,res)=>{
