@@ -29,7 +29,7 @@ export function updateAssignment(assignmentId,assignmentUpdates){
     // const assignment = assignments.find((assignment)=> assignmentId===assignment._id);
     // Object.assign(assignment,assignmentUpdates);
     // return assignment;
-    return model.updateOne({ _id: assignmentId }, assignmentUpdates);
+    return model.updateOne({ _id: assignmentId }, {$set:assignmentUpdates});
 }
 export function deleteAssignment(assignmentId){
     // const {assignments} = Database;
