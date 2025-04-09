@@ -5,13 +5,7 @@ import model from "./model.js";
 export function findAllAssignments(){
     return model.find();
 }
-export function createAssignment(assignment){
-    // const newAssignment = {...assignment, _id: uuidv4()};
-    // Database.assignments = [...assignments, newAssignment];
-    // return newAssignment;
-    delete assignment._id;
-    return model.create(assignment);
-}
+
 
 export function findAssignmentsForCourse(courseId){
     // const {assignments} = Database;
@@ -19,6 +13,13 @@ export function findAssignmentsForCourse(courseId){
     return model.find({ course: courseId });
 }
 
+export function createAssignment(assignment){
+    // const newAssignment = {...assignment, _id: uuidv4()};
+    // Database.assignments = [...assignments, newAssignment];
+    // return newAssignment;
+    delete assignment._id;
+    return model.create(assignment);
+}
 
 export function updateAssignment(assignmentId,assignmentUpdates){
     // const {assignments} = Database;
