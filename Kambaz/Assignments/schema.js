@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 const assignmentSchema = new mongoose.Schema(
-    { "title": String, 
+    { _id:String,
+        "title": String, 
         "course":  { type: String, ref: "CourseModel" },
         "description":String,
         "dueDate":String ,

@@ -1,6 +1,6 @@
 // import assignments from "../Database/assignments.js";
 // import Database from "../Database/index.js";
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import model from "./model.js";
 export function findAllAssignments(){
     return model.find();
@@ -18,6 +18,9 @@ export function createAssignment(assignment){
     // Database.assignments = [...assignments, newAssignment];
     // return newAssignment;
     // delete assignment._id;
+    if (!assignment._id) {
+        assignment._id = uuidv4();
+      }
     return model.create(assignment);
 }
 
