@@ -1,7 +1,7 @@
 // import Database from "../Database/index.js";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import model from "./model.js";
-
+import userModel from "../Users/model.js"
 export function enrollUserInCourse(userId, courseId) {
   console.log(courseId)
   // const { enrollments } = Database;
@@ -23,6 +23,19 @@ export function unenrollAllInCourse(courseId){
 return model.deleteMany({course:courseId})
 }
 
+export async function findUsersForCourse(courseId) {
+  const enrollments = await model.find({ course: courseId }).populate("user");
+  const userIds = enrollments.map((enrollment) => enrollment.user);
+  let result = [];
+  const users = await userModel.find({ _id: { $in: userIds } })
+  .then(users => {
+    
+    result = users
+  })
+  .catch(error => {
+    console.error('Error fetching users:', error);
+  });
 
-
+  return result;
+ }
  
